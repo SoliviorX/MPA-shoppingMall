@@ -36,7 +36,7 @@ var page = {
                 if($this.hasClass('active')) {
                     return;
                 }
-                // 其他
+                // 否则
                 else{
                     $this.addClass('active')
                     .siblings('.sort-item').removeClass('active asc desc');
@@ -67,6 +67,7 @@ var page = {
             listHtml    = '',
             listParam   = this.data.listParam,
             $pListCon   = $('.p-list-con');
+        // 之所以在这里写而不直接在html里写，是因为在这里写每次点击上或下一些都会显示加载图标
         $pListCon.html('<div class="loading"></div>');
         // 删除参数中不必要的字段(categoryId和keyword只需要一个)
         listParam.categoryId 

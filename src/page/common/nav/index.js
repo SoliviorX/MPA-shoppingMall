@@ -20,7 +20,7 @@ var nav = {
         $('.js-register').click(function(){
             window.location.href = './user-register.html';
         });
-        // 退出点击事件
+        // 退出点击事件(请求退出登录的接口，然后刷新页面)
         $('.js-logout').click(function(){
             _user.logout(function(res){
                 window.location.reload();
@@ -29,7 +29,7 @@ var nav = {
             });
         });
     },
-    // 加载用户信息 
+    // 加载用户信息(请求一个接口，把username渲染出来)
     loadUserInfo : function(){
         _user.checkLogin(function(res){
             $('.user.not-login').hide().siblings('.user.login').show()

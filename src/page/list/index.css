@@ -1,5 +1,6 @@
 /* 排序按钮 */
 .sort-con{
+    /* 清除浮动 */
     overflow: auto;
 }
 .sort-con .sort-item{
@@ -12,7 +13,7 @@
     border: 1px solid #ccc;
     margin-right: -1px;
     background: #fff;
-    color: #333;
+    color: rgb(46, 31, 31);
     cursor: pointer;
 }
 .sort-con .sort-item.active{

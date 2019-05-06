@@ -4,14 +4,14 @@
   "description": "mmall前端代码",
   "main": "index.js",
   "scripts": {
-    "dev"     : "WEBPACK_ENV=dev ./node_modules/.bin/webpack-dev-server --port 8086 --inline",
+    "dev": "WEBPACK_ENV=dev ./node_modules/.bin/webpack-dev-server --port 8086 --inline",
     "dev_win": "set WEBPACK_ENV=dev&& webpack-dev-server --inline --port 8088",
-    "dist"    : "WEBPACK_ENV=online ./node_modules/.bin/webpack -p",
+    "dist": "WEBPACK_ENV=online ./node_modules/.bin/webpack -p",
     "dist_win": "set WEBPACK_ENV=online&& webpack -p"
   },
   "repository": {
     "type": "git",
-    "url": "git@gitee.com:jollymmall/mmall-fe.git"
+    "url": "git@github.com:Shideshanxx/EMall.git"
   },
   "author": "shideshan",
   "license": "ISC",
@@ -28,6 +28,6 @@
   },
   "dependencies": {
     "font-awesome": "^4.7.0",
-    "hogan": "^1.0.2" 
+    "hogan": "^1.0.2"
   }
 }

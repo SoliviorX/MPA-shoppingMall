@@ -22,6 +22,7 @@ var navSide = {
     renderNav : function(){
         // 计算active数据
         for(var i = 0, iLength = this.option.navList.length; i < iLength; i++){
+            // option.name从外界接收
             if(this.option.navList[i].name === this.option.name){
                 this.option.navList[i].isActive = true;
             }

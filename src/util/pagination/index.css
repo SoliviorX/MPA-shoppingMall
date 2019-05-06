@@ -14,7 +14,7 @@
     -moz-user-select: none;
     -webkit-user-select: none;
     -ms-user-select: none;
-    user-select: none;   /* 提升用户体验 */
+    user-select: none;   /* css3，user-select为none时，用户不能选择该元素的文本 */
 }
 .pg-content .pg-item.disabled{
     color: #ccc;

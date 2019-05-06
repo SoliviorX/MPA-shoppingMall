@@ -15,6 +15,7 @@ var _mm = {
             success     : function(res){
                 // 请求成功
                 if(0 === res.status){
+                    // 当param.success是function类型时才执行后续方法
                     typeof param.success === 'function' && param.success(res.data, res.msg);
                 }
                 // 没有登录状态，需要强制登录
@@ -41,7 +42,7 @@ var _mm = {
         var result  = window.location.search.substr(1).match(reg);
         return result ? decodeURIComponent(result[2]) : null;
     },
-    // 渲染html模板
+    // 渲染html模板(hogan是先编译后渲染，分两步)
     renderHtml : function(htmlTemplate, data){
         var template    = Hogan.compile(htmlTemplate),
             result      = template.render(data);
@@ -60,6 +61,7 @@ var _mm = {
         var value = $.trim(value);
         // 非空验证
         if('require' === type){
+            // 把value强转成其Boolean类型
             return !!value;
         }
         // 手机号验证 
@@ -73,8 +75,10 @@ var _mm = {
     },
     // 统一登录处理
     doLogin : function(){
+        // 加值为当前页面路径的redirect参数，是为了在调到登录页面点击登录后跳回原页面
         window.location.href = './user-login.html?redirect=' + encodeURIComponent(window.location.href);
     },
+    // 回首页
     goHome : function(){
         window.location.href = './index.html';
     }

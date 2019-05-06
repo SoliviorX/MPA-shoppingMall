@@ -38,7 +38,7 @@
     font-size: 14px;
     margin-top: -7px;
 }
-/* 每一步的容器 */
+/* 每一步的容器，先全部隐藏 */
 .user-con .step-con{
     display: none;
 }

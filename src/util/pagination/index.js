@@ -5,13 +5,14 @@ var templatePagination  = require('./index.string');
 
 var Pagination = function(){
     var _this = this;
+    // 默认options
     this.defaultOption = {
         container       : null,
         pageNum         : 1,
         pageRange       : 3,
         onSelectPage    : null
     };
-    // 事件的处理
+    // 事件的处理(包括页码和上下页)
     $(document).on('click', '.pg-item', function(){
         var $this = $(this);
         // 对于active和disabled按钮点击，不做处理
@@ -22,9 +23,10 @@ var Pagination = function(){
             ? _this.option.onSelectPage($this.data('value')) : null;
     });
 };
+// 用.prototype的方式写对象的方法
 // 渲染分页组件
 Pagination.prototype.render = function(userOption){
-    // 合并选项
+    // 合并options
     this.option = $.extend({}, this.defaultOption, userOption);
     // 判断容器是否为合法的jquery对象
     if(!(this.option.container instanceof jQuery)){
@@ -61,6 +63,7 @@ Pagination.prototype.getPaginationHtml = function(){
         });
     };
     // 下一页按钮的数据
+    // 把'下一页'的value设置成nextPage，所以点击时把nextPage当成pageNum传过去再请求接口；'上一页'同理
     pageArray.push({
         name : '下一页',
         value : this.option.nextPage,

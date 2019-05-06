@@ -27,6 +27,7 @@ var page = {
         this.bindEvent();
     },
     onLoad : function(){
+        // 先加载输入用户名的一步
         this.loadStepUsername();
     },
     bindEvent : function(){
@@ -34,7 +35,7 @@ var page = {
         // 输入用户名后下一步按钮的点击
         $('#submit-username').click(function(){
             var username = $.trim($('#username').val());
-            // 用户名存在
+            // 如果输入了用户名，请求用户名相应的密保问题，视情况加载问题的一步
             if(username){
                 _user.getQuestion(username, function(res){
                     _this.data.username = username;
@@ -44,7 +45,7 @@ var page = {
                     formError.show(errMsg);
                 });
             }
-            // 用户名不存在
+            // 如果没有输入用户名
             else{
                 formError.show('请输入用户名');
             }
@@ -52,7 +53,7 @@ var page = {
         // 输入密码提示问题答案中的按钮点击
         $('#submit-question').click(function(){
             var answer = $.trim($('#answer').val());
-            // 密码提示问题答案存在
+            // 如果已输入密码提示问题答案
             if(answer){
                 // 检查密码提示问题答案
                 _user.checkAnswer({
@@ -67,7 +68,7 @@ var page = {
                     formError.show(errMsg);
                 });
             }
-            // 用户名不存在
+            // 如果没有输入用户名
             else{
                 formError.show('请输入密码提示问题答案');
             }
@@ -75,7 +76,7 @@ var page = {
         // 输入新密码后的按钮点击
         $('#submit-password').click(function(){
             var password = $.trim($('#password').val());
-            // 密码不为空
+            // 密码不为空且长度大于6
             if(password && password.length >= 6){
                 // 检查密码提示问题答案
                 _user.resetPassword({
@@ -92,8 +93,7 @@ var page = {
             else{
                 formError.show('请输入不少于6位的新密码');
             }
-        });
-        
+        }); 
     },
     // 加载输入用户名的一步
     loadStepUsername : function(){

@@ -5,7 +5,7 @@ var HtmlWebpackPlugin   = require('html-webpack-plugin');
 // 环境变量配置，dev / online
 var WEBPACK_ENV         = process.env.WEBPACK_ENV || 'dev';
 
-// 获取html-webpack-plugin参数的方法 
+// 自定义一个获取html-webpack-plugin参数的方法 
 var getHtmlConfig = function(name, title){
     return {
         template    : './src/view/' + name + '.html',
@@ -95,7 +95,17 @@ var config = {
         new HtmlWebpackPlugin(getHtmlConfig('user-pass-update', '修改密码')),
         new HtmlWebpackPlugin(getHtmlConfig('result', '操作结果')),
         new HtmlWebpackPlugin(getHtmlConfig('about', '关于EMall')),
-    ]
+    ],
+    devServer: {
+        port: 8088,
+        inline: true,
+        proxy : {
+            '**/*.do' : {
+                target: 'http://test.happymmall.com',
+                changeOrigin : true
+            }
+        }
+    }
 };
 
 if('dev' === WEBPACK_ENV){

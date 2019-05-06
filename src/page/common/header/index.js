@@ -9,7 +9,7 @@ var header = {
     },
     onLoad : function(){
         var keyword = _mm.getUrlParam('keyword');
-        // keyword存在，则回填输入框
+        // 如果URL参数keyword存在，则回填到输入框
         if(keyword){
             $('#search-input').val(keyword);
         };
@@ -30,6 +30,7 @@ var header = {
     },
     // 搜索的提交
     searchSubmit : function(){
+        // 先去掉搜索词的空格
         var keyword = $.trim($('#search-input').val());
         // 如果提交的时候有keyword,正常跳转到list页
         if(keyword){
@@ -42,4 +43,5 @@ var header = {
     }
 };
 
+// 不需要向外部输出，所以不加module.exports，直接调用就完事了
 header.init();

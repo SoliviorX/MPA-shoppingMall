@@ -4,6 +4,7 @@ require('page/common/nav-simple/index.js');
 var _mm = require('util/mm.js');
 
 $(function(){
+    // 从url携带的参数获取到type值
     var type        = _mm.getUrlParam('type') || 'default',
         $element    = $('.' + type + '-success');
     if(type === 'payment'){

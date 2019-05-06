@@ -22,7 +22,7 @@
     outline: none;   /* 去掉输入框轮廓 */
 }
 .header .search-con .search-btn{
-    position: absolute;    /* 绝对定位后，其与上一元素末尾对齐 */
+    position: absolute;    /* 绝对定位后，就会其与上一元素末尾对齐，不然有一个空隙 */
     height: 44px;
     width: 80px;
 }
