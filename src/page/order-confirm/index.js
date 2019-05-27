@@ -23,7 +23,7 @@ var page = {
     },
     bindEvent : function(){
         var _this = this;
-        // 地址的选择
+        // 地址的选择(获取到选择的地址的id，增加active样式，去掉其他地址的active样式)
         $(document).on('click', '.address-item', function(){
             $(this).addClass('active')
                 .siblings('.address-item').removeClass('active');
@@ -95,17 +95,19 @@ var page = {
             $('.address-con').html('<p class="err-tip">地址加载失败，请刷新后重试</p>');
         })
     },
-    // 处理地址列表中选中状态
+    // 处理地址列表中选中状态(bug：在重新loadAddressList后之前的选中状态消失)
     addressFilter : function(data){
+        // 如果有选中的地址
         if(this.data.selectedAddressId){
             var selectedAddressIdFlag = false;
             for (var i = 0, length = data.list.length; i < length; i++) {
+                // 如果选中的id在地址列表里，就给他添加一个active样式
                 if(data.list[i].id === this.data.selectedAddressId){
                     data.list[i].isActive = true;
                     selectedAddressIdFlag = true;
                 }
             };
-            // 如果以前选中的地址不在列表里，将其删除
+            // 如果以前选中的地址不在列表里，则将其删除
             if(!selectedAddressIdFlag){
                 this.data.selectedAddressId = null;
             }

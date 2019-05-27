@@ -44,7 +44,7 @@ var page = {
                 $pCount.val(currCount > minCount ? currCount - 1 : minCount);
             }
         });
-        // 加入购物车
+        // 加入购物车(请求接口)
         $(document).on('click', '.cart-add', function(){
             _cart.addToCart({
                 productId   : _this.data.productId,

@@ -157,7 +157,7 @@
     display: block;
     float: left;
     width: 85px;
-    text-align: right;
+    text-align: right; /* 右对齐 */
     height: 30px;
     line-height: 30px;
     margin-right: 10px;

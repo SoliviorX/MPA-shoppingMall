@@ -10,7 +10,7 @@ var addressModal = {
         this.option = option;
         this.option.data = option.data || {};
         this.$modalWrap = $('.modal-wrap');
-        //渲染页面(渲染完html结构就出来了)
+        //渲染页面
         this.loadModal();
         //绑定事件
         this.bindEvent();
@@ -20,6 +20,7 @@ var addressModal = {
         //省份和城市的二级联动
         this.$modalWrap.find('#receiver-province').change(function(){
             var selectedProvince = $(this).val();
+            // 在选择省份的时候，加载城市列表
             _this.loadCities(selectedProvince);
         });
         // 提交收货地址
@@ -70,8 +71,6 @@ var addressModal = {
         this.$modalWrap.html(addressModalHtml);//姓名电话等信息的回填直接在input框加value属性
         //加载省份
         this.loadProvince();
-        //在加载省份的时候根据receiverProvince加载城市
-        //this.loadCities();
     },
     // 加载省份信息
     loadProvince : function(){
